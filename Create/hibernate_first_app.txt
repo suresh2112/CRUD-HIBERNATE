@@ -1,0 +1,112 @@
+Hibernate First Application
+-----------------------------
+
+    Hibernate Jar & Mysql Jar
+
+    
+
+    Step1 :  Create Maven Application  (Stand alone App)
+
+    Step2 : Add required dependencies (Hibernate Jar & Mysql Jar)
+    --------------------------------------------------------------------------------------------------
+
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.26</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.16.Final</version>
+		</dependency>
+
+     
+
+      Step3 : Create model class and database table  (employee.hbm.xml)
+      ---------------------------------------------------------------------
+
+
+
+      Step 4 : Hibernate Mapping (Mapping model class with data base table )
+
+     ------------------------------------------------------------------------------
+
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.createiq.model.Employee" table = "EMP_TAB">
+      
+      <id name = "eid" type = "int" column = "emp_id">
+      </id>
+      
+      <property name = "ename" column = "emp_name" type = "string"/>
+      <property name = "esal" column = "emp_sal" type = "double"/>
+      
+   </class>
+</hibernate-mapping>
+
+       
+
+      Step5 : Hibernate config file (db details, hibernate properties and Mapping details)  (hibernate.cfg.xml)
+     ----------------------------------------------------------------------------------------
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- JDBC Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/jdbcdemo?useSSL=false</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		<!-- Select our SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<!-- Echo the SQL to stdout -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<!-- Set the current session context -->
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property>
+		<!-- dbcp connection pool configuration -->
+		<mapping resource="employee.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
+
+     
+      Step 6 : Create Session Object
+ ---------------------------------------------
+        
+        Configuration config = new Configuration();
+	  config.configure();
+	  // local SessionFactory bean created
+	  SessionFactory sessionFactory = config.buildSessionFactory();
+	  Session session = sessionFactory.getCurrentSession();
+
+      Step 7: Insert operation
+----------------------------------------------------
+
+      		Configuration configuration = new Configuration();
+		configuration.configure();
+		SessionFactory sf = configuration.buildSessionFactory();
+		Session session = sf.openSession();
+		Employee employee = new Employee(1001, "Balaji", 23000.00);
+		session.save(employee);
+		session.beginTransaction().commit();
+		session.close();
+
+
+  
+
+
+
+ 
+
+         

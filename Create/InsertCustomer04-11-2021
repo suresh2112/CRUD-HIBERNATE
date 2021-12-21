@@ -1,0 +1,76 @@
+package com.jdbc.demo.preparestatement;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class InsertCustomer {
+
+	public static void main(String[] args) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			// Step 1 : Register Driver
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// Step 2: Create Connection
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcdemo", "root", "root");
+			// Step 3: Execute Query
+			preparedStatement = connection
+					.prepareStatement("INSERT INTO CUSTOMER(CID,CNAME,DOB,CIMAGE) VALUES(?,?,?,?)");
+			preparedStatement.setInt(1, 1010);
+			preparedStatement.setString(2, "Tomy");
+
+			String date_string = "29-09-1989";
+			// Instantiating the SimpleDateFormat class
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+			// Parsing the given String to Date object
+			Date date = null;
+			try {
+				date = formatter.parse(date_string);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Date value: " + date);
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			preparedStatement.setDate(3, sqlDate);
+
+			FileInputStream fin = new FileInputStream("C:\\Users\\lenovo\\OneDrive\\Pictures\\dhoni.jpg");
+			preparedStatement.setBinaryStream(4, fin, fin.available());
+
+			int rowsInserted = preparedStatement.executeUpdate();
+
+			System.out.println(rowsInserted + " Rows Inserted Successfully... ");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				preparedStatement.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+}

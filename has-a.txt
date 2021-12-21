@@ -1,0 +1,58 @@
+public  class Emp {
+	int eid;
+	String name;
+	EmpAdd empAdd;
+	public Emp() {
+		// TODO Auto-generated constructor stub
+	}
+	public Emp(int eid, String name, EmpAdd empAdd) {
+		super();
+		this.eid = eid;
+		this.name = name;
+		this.empAdd = empAdd;
+	}
+//	@Override
+//	public String toString() {
+//		return "eid=" + eid + ", name=" + name + ", empAdd=" + empAdd ;
+	}
+	
+	
+	
+}
+ ...............................................................................................................
+
+public class EmpAdd {
+	int h_no;
+	String city;
+	public EmpAdd() {
+		// TODO Auto-generated constructor stub
+	}
+	public EmpAdd(int h_no, String city) {
+		super();
+		this.h_no = h_no;
+		this.city = city;
+	}
+	@Override
+	public String toString() {
+		return "emp_h_no=" + h_no + ",emp_city=" + city ;
+	}
+	
+
+}..........................................
+....................
+package com.createiq.inheritence;
+
+public class EmpTest {
+	public static void main(String[] args) {
+		EmpAdd add=new EmpAdd(129, "hyd");
+		
+		Emp emp=new Emp(1000,"createiq",add);
+		System.out.println(emp);
+		Emp emp2=new Emp(1001, "s", add);
+		System.out.println(emp2);
+		
+	}
+	
+
+}
+

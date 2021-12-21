@@ -1,0 +1,15 @@
+16Q )Display first name and last name after converting the first letter of each name to upper case and the rest to lower case?
+16A)select concat(upper(substring(first_name,1,1)),lower(substring(first_name,2))) from employees;
+
+17.	Display the first word in job title.
+          select job_title ,substr(job_title,1,instr(job_title,'')-1) from employees;
+
+18 Q)	Display the length of first name for employees where last name contain character ‘b’ after 3rd position?
+18 A)   select first_name,last_name,length(first_name) from employees where last_name like "__c%"; 
+
+19 Q) Display first name in upper case and email address in lower case for employees where the first name and email address are same irrespective of the case?
+19 A) select first_name,email, upper(first_name),lower(email) from employees;
+
+21 Q)	Display the number of days between system date and 1st January 2011?
+21 A) select timestampdiff(day,'2011-01-01',current_date) ;
+

@@ -1,0 +1,103 @@
+@charset "ISO-8859-1";
+
+.t1{
+	border: 2px solid red;
+	table-layout:auto;
+	border-bottom-style:5px blue;
+	margin-left: 450px;
+	background: pink;
+	align-content: center;
+	color: blue;
+	text-align: center;
+	
+	}
+	
+	.img1{
+	
+position:fixed;
+
+	}
+	.head{
+	color: yellow;
+	padding: 10px
+	}
+	.b{
+	background-color: red;
+	background-image: url("https://pharm.ucsf.edu/sites/pharm.ucsf.edu/files/styles/lab_three_quarters/public/helpdesk/media-browser/SHD%20Logo_0.png?itok=3c_UH4Gc&timestamp=1471146302");
+	
+	}
+	.sh{
+	
+	text-align: center;
+color:green;
+	widows:200px;
+	height: 100px;
+	padding: 20px;
+	
+	
+	}
+	.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-left: 450px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-left: 450px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.cap{
+	text-transform: capitalize;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+.indexh1{
+	text-align: center;
+	background-color: blue;
+	padding: 2px;
+	width: 500px;
+	height: 100px;
+	margin-left: 450px;
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
